@@ -56,7 +56,7 @@ CREATE TABLE student_lesson (
   studentID INT NOT NULL,
   lessonID INT NOT NULL,
   PRIMARY KEY (studentID, lessonID),
-  FOREIGN KEY (studentID) REFERENCES student(studentID,
+  FOREIGN KEY (studentID) REFERENCES student(studentID),
   FOREIGN KEY (lessonID) REFERENCES lesson(lessonID),
 );
 
