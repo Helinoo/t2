@@ -59,17 +59,17 @@ VALUES
 INSERT INTO price_list (lessonID, price, lessonType, lessonSkill, siblingDiscount)
 VALUES 
 (1, 50, 'individual', 'beginner', TRUE),
-(2, 70, 'group', 'intermediate', FALSE),
-(3, 100, 'ensemble', 'advanced', TRUE),
+(2, 70, 'group', 'intermediate', TRUE),
+(3, 100, 'ensemble', 'advanced', FALSE),
 (4, 80, 'group', 'beginner', FALSE);
 
 -- Insert data into `student_lesson`
 INSERT INTO student_lesson (studentID, lessonID, priceID)
 VALUES 
-(1, 1, 1), -- Alice, individual beginner lesson with sibling discount
-(2, 2, 2), -- Bob, group intermediate lesson without sibling discount
-(3, 3, 3), -- Charlie, ensemble advanced lesson with sibling discount
-(4, 4, 4); -- Daisy, group beginner lesson without sibling discount
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3), 
+(4, 4, 4); 
 
 -- Insert data into `ensemble_lesson`
 INSERT INTO ensemble_lesson (lessonID, genre, minStudents, maxStudents)
