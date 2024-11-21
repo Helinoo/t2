@@ -3,7 +3,7 @@ CREATE TABLE instructor (
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
 	personNumber VARCHAR(12) NOT NULL,
-	email VARCHAR(50) NOT NULL,
+	email VARCHAR(50),
 	adress VARCHAR(50) NOT NULL,
 	zip VARCHAR(50) NOT NULL,
 	city VARCHAR(50) NOT NULL
@@ -14,7 +14,7 @@ CREATE TABLE student (
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
 	personNumber VARCHAR(12) NOT NULL,
-	email VARCHAR(50) NOT NULL,
+	email VARCHAR(50),
 	adress VARCHAR(50) NOT NULL,
 	zip VARCHAR(50) NOT NULL,
 	city VARCHAR(50) NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE student_lesson (
 
 CREATE TABLE ensemble_lesson (
 	ensemble_lessonID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
-    lessonID INT,
+    lessonID INT NOT NULL, 
     genre VARCHAR(20) NOT NULL CHECK (genre IN ('punk', 'rock', 'classical')),
     minStudents INT NOT NULL,
     maxStudents INT NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE ensemble_lesson (
 
 CREATE TABLE group_lesson (
 	group_lessonID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
-    lessonID INT,
+    lessonID INT NOT NULL,
     minStudents INT NOT NULL,
     maxStudents INT NOT NULL,
     instrument VARCHAR(50) NOT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE group_lesson (
 
 CREATE TABLE individual_lesson (
 	individual_lessonID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
-    lessonID INT,
+    lessonID INT NOT NULL,
     instrument VARCHAR(50) NOT NULL,
     FOREIGN KEY (lessonID) REFERENCES lesson(lessonID)
 );
@@ -116,21 +116,21 @@ CREATE TABLE contact_person (
 
 CREATE TABLE student_phone (
     phoneNumber VARCHAR(50) NOT NULL,
-    studentID INT,
+    studentID INT NOT NULL,
 	PRIMARY KEY (phoneNumber, studentID),
     FOREIGN KEY (studentID) REFERENCES student(studentID) ON DELETE CASCADE
 );
 
 CREATE TABLE instructor_phone (
     phoneNumber VARCHAR(50) NOT NULL,
-    instructorID INT,
+    instructorID INT NOT NULL,
 	PRIMARY KEY (phoneNumber, instructorID),
     FOREIGN KEY (instructorID) REFERENCES instructor(instructorID) ON DELETE CASCADE
 );
 
 CREATE TABLE contact_person_phone (
     phoneNumber VARCHAR(50) NOT NULL,
-    contact_personID INT,
+    contact_personID INT NOT NULL,
 	PRIMARY KEY (phoneNumber, contact_personID),
     FOREIGN KEY (contact_personID) REFERENCES contact_person(contact_personID) ON DELETE CASCADE
 );
