@@ -24,12 +24,12 @@ VALUES
 ('Roland', 'Keyboard', 6, 'Room 102');
 
 -- Insert data into `rental`
-INSERT INTO rental (studentID, instrumentID, dateOfRental, dueDateOfRental)
+INSERT INTO rental (studentID, instrumentID, dateOfRental, dueDateOfRental, rentalFee)
 VALUES 
-(1, 1, '2024-01-01', '2024-02-01'),
-(2, 2, '2024-01-10', '2024-02-10'),
-(3, 3, '2024-01-15', '2024-02-15'),
-(4, 4, '2024-01-20', '2024-02-20');
+(1, 1, '2024-01-01', '2024-02-01', '$50'),
+(2, 2, '2024-01-10', '2024-02-10', '$100'),
+(3, 3, '2024-01-15', '2024-02-15', '$150'),
+(4, 4, '2024-01-20', '2024-02-20', '$75');
 
 -- Insert data into `lesson`
 INSERT INTO lesson (instructorID, date)
