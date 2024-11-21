@@ -76,9 +76,9 @@ CREATE TABLE student_lesson (
     lessonID INT NOT NULL,
 	priceID INT NOT NULL,
     PRIMARY KEY (studentID, lessonID),
-    FOREIGN KEY (studentID) REFERENCES student(studentID),
-    FOREIGN KEY (lessonID) REFERENCES lesson(lessonID),
-	FOREIGN KEY (priceID) REFERENCES price_list(priceID)
+    FOREIGN KEY (studentID) REFERENCES student(studentID) ON DELETE CASCADE,
+    FOREIGN KEY (lessonID) REFERENCES lesson(lessonID) ON DELETE CASCADE,
+	FOREIGN KEY (priceID) REFERENCES price_list(priceID) ON DELETE CASCADE
 );
 
 CREATE TABLE ensemble_lesson (
