@@ -1,35 +1,35 @@
 -- Insert data into `instructor`
 INSERT INTO instructor (firstName, lastName, personNumber, email, adress, zip, city)
 VALUES 
-('John', 'Smith', '123456789012', 'john.smith@example.com', '123 Elm St', '12345', 'Springfield'),
-('Jane', 'Doe', '987654321098', 'jane.doe@example.com', '456 Oak St', '54321', 'Shelbyville'),
-('Emily', 'Johnson', '112233445566', 'emily.johnson@example.com', '789 Maple Ave', '67890', 'Hilltown'),
-('Michael', 'Brown', '667788990011', 'michael.brown@example.com', '101 Pine St', '98765', 'Rivertown');
+('James', 'Brown', '123456789012', 'james.brown@example.com', '123 Elm St', '54321', 'Springfield'),
+('Emily', 'Davis', '987654321098', 'emily.davis@example.com', '456 Oak St', '12345', 'Rivertown'),
+('Michael', 'Johnson', '112233445566', 'michael.johnson@example.com', '789 Maple Ave', '67890', 'Hilltown'),
+('Sarah', 'Wilson', '223344556677', 'sarah.wilson@example.com', '101 Pine St', '98765', 'Shelbyville');
 
 -- Insert data into `student`
 INSERT INTO student (firstName, lastName, personNumber, email, adress, zip, city, studentID_0)
 VALUES 
-('Alice', 'Smith', '223344556677', 'alice.smith@example.com', '111 Birch Ln', '11111', 'Metropolis', NULL),
-('Bob', 'Williams', '334455667788', 'bob.williams@example.com', '222 Cedar Rd', '22222', 'Gotham', 1),
-('Charlie', 'Brown', '445566778899', 'charlie.brown@example.com', '333 Fir St', '33333', 'Hilltown', 1),
-('Daisy', 'Miller', '556677889900', 'daisy.miller@example.com', '444 Spruce Ave', '44444', 'Springfield', NULL);
+('Alice', 'Taylor', '334455667788', 'alice.taylor@example.com', '111 Birch Ln', '54321', 'Metropolis', NULL),
+('Bob', 'Smith', '445566778899', 'bob.smith@example.com', '222 Cedar Rd', '12345', 'Gotham', 1),
+('Charlie', 'Harris', '556677889900', 'charlie.harris@example.com', '333 Fir St', '67890', 'Hilltown', 1),
+('Daisy', 'Clark', '667788990011', 'daisy.clark@example.com', '444 Spruce Ave', '98765', 'Springfield', NULL);
 
 -- Insert data into `instrument`
 INSERT INTO instrument (brand, instrumentType, stock, locationOfInstrument)
 VALUES 
 ('Yamaha', 'Piano', 5, 'Room A'),
-('Fender', 'Guitar', 10, 'Storage 1'),
+('Fender', 'Guitar', 8, 'Storage 1'),
 ('Roland', 'Drums', 3, 'Room B'),
-('Stradivarius', 'Violin', 2, 'Storage 2'),
-('Casio', 'Keyboard', 8, 'Room C');
+('Casio', 'Keyboard', 10, 'Room C'),
+('Stradivarius', 'Violin', 2, 'Storage 2');
 
 -- Insert data into `rental`
 INSERT INTO rental (studentID, instrumentID, dateOfRental, dueDateOfRental, rentalFee)
 VALUES 
 (1, 1, '2024-01-01', '2024-02-01', '50'),
-(2, 2, '2024-01-05', '2024-03-05', '75'),
+(2, 2, '2024-01-05', '2024-03-05', '70'),
 (3, 3, '2024-01-10', '2024-02-10', '60'),
-(4, 4, '2024-01-15', '2024-02-15', '100');
+(4, 4, '2024-01-15', '2024-02-15', '80');
 
 -- Insert data into `lesson`
 INSERT INTO lesson (instructorID, date)
@@ -92,10 +92,10 @@ VALUES
 -- Insert data into `contact_person`
 INSERT INTO contact_person (firstName, lastName, studentID)
 VALUES 
-('Mary', 'Smith', 1),
-('James', 'Williams', 2),
-('Linda', 'Brown', 3),
-('Sarah', 'Miller', 4);
+('Mary', 'Taylor', 1),
+('James', 'Smith', 2),
+('Linda', 'Harris', 3),
+('Sarah', 'Clark', 4);
 
 -- Insert data into `student_phone`
 INSERT INTO student_phone (phoneNumber, studentID)
