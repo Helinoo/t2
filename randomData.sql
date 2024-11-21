@@ -9,9 +9,9 @@ VALUES
 -- Insert data into `student`
 INSERT INTO student (firstName, lastName, personNumber, email, adress, zip, city, studentID_0)
 VALUES 
-('Alice', 'Johnson', '111222333444', 'alice.johnson@example.com', '10 Main St', '10001', 'Metropolis', 2),
-('Bob', 'Williams', '222333444555', 'bob.williams@example.com', '20 South Ave', '10002', 'Gotham', NULL),
-('Charlie', 'Brown', '333444555666', 'charlie.brown@example.com', '30 West Blvd', '10003', 'Hillview', 1),
+('Alice', 'Johnson', '111222333444', 'alice.johnson@example.com', '10 Main St', '10001', 'Metropolis', NULL),
+('Bob', 'Williams', '222333444555', 'bob.williams@example.com', '20 South Ave', '10002', 'Gotham', 1),
+('Charlie', 'Brown', '333444555666', 'charlie.brown@example.com', '30 West Blvd', '10003', 'Hillview', NULL),
 ('Daisy', 'Miller', '444555666777', 'daisy.miller@example.com', '40 East Ln', '10004', 'Springville', NULL);
 
 -- Insert data into `instrument`
@@ -55,14 +55,6 @@ VALUES
 (3, 'Violin'),
 (4, 'Drums, Keyboard');
 
--- Insert data into `student_lesson`
-INSERT INTO student_lesson (studentID, lessonID)
-VALUES 
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4);
-
 -- Insert data into `price_list`
 INSERT INTO price_list (lessonID, price, lessonType, lessonSkill, siblingDiscount)
 VALUES 
@@ -70,6 +62,14 @@ VALUES
 (2, 70, 'group', 'intermediate', FALSE),
 (3, 100, 'ensemble', 'advanced', TRUE),
 (4, 80, 'group', 'beginner', FALSE);
+
+-- Insert data into `student_lesson`
+INSERT INTO student_lesson (studentID, lessonID, priceID)
+VALUES 
+(1, 1, 1), -- Alice, individual beginner lesson with sibling discount
+(2, 2, 2), -- Bob, group intermediate lesson without sibling discount
+(3, 3, 3), -- Charlie, ensemble advanced lesson with sibling discount
+(4, 4, 4); -- Daisy, group beginner lesson without sibling discount
 
 -- Insert data into `ensemble_lesson`
 INSERT INTO ensemble_lesson (lessonID, genre, minStudents, maxStudents)
@@ -90,7 +90,7 @@ VALUES
 (2, 'Keyboard');
 
 -- Insert data into `contact_person`
-INSERT INTO contact_person (firstName, lastName, StudentID)
+INSERT INTO contact_person (firstName, lastName, studentID)
 VALUES 
 ('Mary', 'Johnson', 1),
 ('James', 'Williams', 2),
