@@ -36,6 +36,7 @@ CREATE TABLE rental (
     instrumentID INT NOT NULL,
     dateOfRental DATE NOT NULL,
     dueDateOfRental DATE NOT NULL,
+	rentalFee VARCHAR(50) NOT NULL,
     FOREIGN KEY (studentID) REFERENCES student(studentID),
     FOREIGN KEY (instrumentID) REFERENCES instrument(instrumentID)
 );
@@ -60,20 +61,24 @@ CREATE TABLE instruments_to_teach (
     FOREIGN KEY (instructorID) REFERENCES instructor(instructorID) ON DELETE CASCADE
 );
 
-CREATE TABLE student_lesson (
-    studentID INT NOT NULL,
-    lessonID INT NOT NULL,
-    PRIMARY KEY (studentID, lessonID),
-    FOREIGN KEY (studentID) REFERENCES student(studentID),
-    FOREIGN KEY (lessonID) REFERENCES lesson(lessonID)
-);
-
 CREATE TABLE price_list (
+	priceID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
     lessonID INT NOT NULL,
     price INT NOT NULL,
 	lessonType VARCHAR(20) NOT NULL CHECK (lessonType IN ('group', 'ensemble', 'individual')),
 	lessonSkill VARCHAR(20) NOT NULL CHECK (lessonSkill IN ('beginner', 'intermediate', 'advanced')),
+	siblingDiscount BOOLEAN,
     FOREIGN KEY (lessonID) REFERENCES lesson(lessonID)
+);
+
+CREATE TABLE student_lesson (
+    studentID INT NOT NULL,
+    lessonID INT NOT NULL,
+	priceID INT NOT NULL,
+    PRIMARY KEY (studentID, lessonID),
+    FOREIGN KEY (studentID) REFERENCES student(studentID),
+    FOREIGN KEY (lessonID) REFERENCES lesson(lessonID),
+	FOREIGN KEY (priceID) REFERENCES price_list(priceID)
 );
 
 CREATE TABLE ensemble_lesson (
@@ -105,7 +110,7 @@ CREATE TABLE contact_person (
 	contact_personID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
-    StudentID INT NOT NULL,
+    studentID INT NOT NULL,
     FOREIGN KEY (studentID) REFERENCES student(studentID) ON DELETE CASCADE
 );
 
