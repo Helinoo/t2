@@ -113,17 +113,17 @@ CREATE TABLE contact_person (
 CREATE TABLE student_phone (
     phoneNumber VARCHAR(15) NOT NULL,
     studentID INT,
-    FOREIGN KEY (studentID) REFERENCES student(studentID) ON DELETE CASCADE,
+    FOREIGN KEY (studentID) REFERENCES student(studentID) ON DELETE CASCADE
 );
 
 CREATE TABLE instructor_phone (
     phoneNumber VARCHAR(15) NOT NULL,
     instructorID INT,
-    FOREIGN KEY (instructorID) REFERENCES instructor(instructorID) ON DELETE CASCADE,
+    FOREIGN KEY (instructorID) REFERENCES instructor(instructorID) ON DELETE CASCADE
 );
 
 CREATE TABLE contact_person_phone (
     phoneNumber VARCHAR(15) NOT NULL,
     contact_personID INT,
-    FOREIGN KEY (contact_personID) REFERENCES contact_person(contact_personID) ON DELETE CASCADE,
+    FOREIGN KEY (contact_personID) REFERENCES contact_person(contact_personID) ON DELETE CASCADE
 );
