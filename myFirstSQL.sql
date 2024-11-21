@@ -2,28 +2,28 @@ CREATE TABLE instructor (
   instructorID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
   firstName VARCHAR(50) NOT NULL,
   lastName VARCHAR(50) NOT NULL,
-	personNumber VARCHAR(12) NOT NULL,
-	email VARCHAR(50) NOT NULL,
-	adress VARCHAR(50) NOT NULL,
-	zip VARCHAR(50) NOT NULL,
-	city VARCHAR(50) NOT NULL
+  personNumber VARCHAR(12) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  adress VARCHAR(50) NOT NULL,
+  zip VARCHAR(50) NOT NULL,
+  city VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE instructor_availability (
   instructorID INT NOT NULL,
-	startTime VARCHAR(50) NOT NULL,
-	endTime VARCHAR(50) NOT NULL,
+  startTime VARCHAR(50) NOT NULL,
+  endTime VARCHAR(50) NOT NULL,
   FOREIGN KEY (instructorID) REFERENCES instructor(instructorID) ON DELETE CASCADE
 );
 
 CREATE TABLE instrument (
   instrumentID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
   brand VARCHAR(50),
-	type VARCHAR(50) NOT NULL,
+  type VARCHAR(50) NOT NULL,
   stock INT NOT NULL,
   locationOfInstrument VARCHAR(100) NOT NULL,
-	rentalID INT,
-	FOREIGN KEY (rentalID) REFERENCES rental(rentalID)
+  rentalID INT,
+  FOREIGN KEY (rentalID) REFERENCES rental(rentalID)
 );
 
 CREATE TABLE instruments_to_teach (
@@ -43,13 +43,13 @@ CREATE TABLE student (
   studentID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
   firstName VARCHAR(50) NOT NULL,
   lastName VARCHAR(50) NOT NULL,
-	personNumber VARCHAR(12) NOT NULL,
-	email VARCHAR(50) NOT NULL,
-	adress VARCHAR(50) NOT NULL,
-	zip VARCHAR(50) NOT NULL,
-	city VARCHAR(50) NOT NULL,
-	studentID_0 INT,
-	FOREIGN KEY (studentID_0) REFERENCES student(studentID) ON DELETE SET NULL
+  personNumber VARCHAR(12) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  adress VARCHAR(50) NOT NULL,
+  zip VARCHAR(50) NOT NULL,
+  city VARCHAR(50) NOT NULL,
+  studentID_0 INT,
+  FOREIGN KEY (studentID_0) REFERENCES student(studentID) ON DELETE SET NULL
 );
 
 CREATE TABLE student_lesson (
@@ -73,13 +73,13 @@ CREATE TABLE rental (
 CREATE TABLE price_list (
   lessonID INT NOT NULL,
   price INT NOT NULL,
-	lessonType ENUM (individuallesson, grouplesson, ensemblelesson) NOT NULL,
-	lessonSkill ENUM (beginner, intermediate, advanced) NOT NULL,
+  lessonType ENUM (individuallesson, grouplesson, ensemblelesson) NOT NULL,
+  lessonSkill ENUM (beginner, intermediate, advanced) NOT NULL,
   FOREIGN KEY (lessonID) REFERENCES lesson(lessonID)
 );
 
 CREATE TABLE ensemble_lesson (
-	ensemble_lessonID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
+  ensemble_lessonID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
   lessonID INT,
   genre ENUM (punk, rock, classical) NOT NULL,
   minStudents INT NOT NULL,
@@ -88,7 +88,7 @@ CREATE TABLE ensemble_lesson (
 );
 
 CREATE TABLE group_lesson (
-	group_lessonID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
+  group_lessonID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
   lessonID INT,
   minStudents INT NOT NULL,
   maxStudents INT NOT NULL,
@@ -97,7 +97,7 @@ CREATE TABLE group_lesson (
 );
 
 CREATE TABLE individual_lesson (
-	individual_lessonID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
+  individual_lessonID INT GENERATED ALWAYS AS IDENTITY NOT NULL PRIMARY KEY,
   lessonID INT,
   instrument VARCHAR(50) NOT NULL,
   FOREIGN KEY (lessonID) REFERENCES lesson(lessonID)
