@@ -1,9 +1,9 @@
 INSERT INTO instructor (firstName, lastName, personNumber, email, adress, zip, city)
 VALUES 
-('John', 'Doe', '123456789012', 'john.doe@example.com', '123 Elm Street', '12345', 'Springfield'),
-('Jane', 'Smith', '987654321098', 'jane.smith@example.com', '456 Oak Avenue', '54321', 'Shelbyville'),
-('Emily', 'Johnson', '456789123456', 'emily.johnson@example.com', '789 Pine Road', '67890', 'Rivertown'),
-('Michael', 'Brown', '654321987654', 'michael.brown@example.com', '101 Maple Street', '78901', 'Hilltown');
+('John', 'Doe', '123456789012', 'john.doe@example.com', '123 Elm St', '12345', 'Springfield'),
+('Jane', 'Smith', '987654321098', 'jane.smith@example.com', '456 Oak Ave', '54321', 'Shelbyville'),
+('Emily', 'Johnson', '456789123456', 'emily.johnson@example.com', '789 Pine Rd', '67890', 'Rivertown'),
+('Michael', 'Brown', '654321987654', 'michael.brown@example.com', '101 Maple St', '78901', 'Hilltown');
 
 INSERT INTO instructor_availability (instructorID, startTime, endTime)
 VALUES 
@@ -12,43 +12,41 @@ VALUES
 (3, '09:00', '15:00'),
 (4, '10:00', '14:00');
 
-INSERT INTO instrument (brand, type, stock, locationOfInstrument, rentalID)
+INSERT INTO instrument (brand, instrumentType, stock, locationOfInstrument)
 VALUES 
-('Fender', 'Guitar', 10, 'Storage A', NULL),
-('Yamaha', 'Piano', 5, 'Room 101', NULL),
-('Stradivarius', 'Violin', 2, 'Storage B', NULL),
-('Pearl', 'Drums', 7, 'Storage C', NULL),
-('Roland', 'Keyboard', 6, 'Room 102', NULL);
+('Fender', 'Guitar', 10, 'Storage A'),
+('Yamaha', 'Piano', 5, 'Room 101'),
+('Stradivarius', 'Violin', 2, 'Storage B'),
+('Pearl', 'Drums', 7, 'Storage C'),
+('Roland', 'Keyboard', 6, 'Room 102');
 
 INSERT INTO instruments_to_teach (instructorID, instrumentsTaught)
 VALUES 
-(1, 'Guitar, Keyboard'),
+(1, 'Guitar'),
 (2, 'Piano'),
 (3, 'Violin'),
-(4, 'Drums');
+(4, 'Drums, Keyboard');
 
 INSERT INTO lesson (instructorID, date)
 VALUES 
-(1, '2024-01-15 10:00:00'),
-(2, '2024-01-16 14:00:00'),
-(3, '2024-01-17 09:00:00'),
-(4, '2024-01-18 11:00:00');
+(1, '2024-01-15 10:00 AM'),
+(2, '2024-01-16 02:00 PM'),
+(3, '2024-01-17 09:00 AM'),
+(4, '2024-01-18 11:00 AM');
 
-INSERT INTO student (firstName, lastName, personNumber, email, adress, zip, city)
+INSERT INTO student (firstName, lastName, personNumber, email, adress, zip, city, studentID_0)
 VALUES 
-('Alice', 'Johnson', '111222333444', 'alice.johnson@example.com', '10 Main St', '10001', 'Metropolis'),
-('Bob', 'Williams', '222333444555', 'bob.williams@example.com', '20 South Ave', '10002', 'Gotham'),
-('Charlie', 'Brown', '333444555666', 'charlie.brown@example.com', '30 West Blvd', '10003', 'Hillview'),
-('Daisy', 'Miller', '444555666777', 'daisy.miller@example.com', '40 East Lane', '10004', 'Springville');
+('Alice', 'Johnson', '111222333444', 'alice.johnson@example.com', '10 Main St', '10001', 'Metropolis', NULL),
+('Bob', 'Williams', '222333444555', 'bob.williams@example.com', '20 South Ave', '10002', 'Gotham', NULL),
+('Charlie', 'Brown', '333444555666', 'charlie.brown@example.com', '30 West Blvd', '10003', 'Hillview', NULL),
+('Daisy', 'Miller', '444555666777', 'daisy.miller@example.com', '40 East Ln', '10004', 'Springville', NULL);
 
 INSERT INTO student_lesson (studentID, lessonID)
 VALUES 
 (1, 1),
 (2, 2),
 (3, 3),
-(4, 4),
-(1, 3),
-(2, 4);
+(4, 4);
 
 INSERT INTO rental (studentID, instrumentID, dateOfRental, dueDateOfRental)
 VALUES 
@@ -79,17 +77,32 @@ VALUES
 (1, 'Violin'),
 (2, 'Keyboard');
 
-INSERT INTO phone (phoneNumber, studentID, instructorID)
-VALUES 
-('123-456-7890', 1, NULL),
-('987-654-3210', NULL, 1),
-('456-123-7890', 2, NULL),
-('789-654-1230', NULL, 2);
-
 INSERT INTO contact_person (firstName, lastName, StudentID)
 VALUES 
 ('Mary', 'Johnson', 1),
 ('James', 'Williams', 2),
 ('Linda', 'Brown', 3),
 ('Sarah', 'Miller', 4);
+
+INSERT INTO student_phone (phoneNumber, studentID)
+VALUES 
+('123-456-7890', 1),
+('987-654-3210', 2),
+('456-123-7890', 3),
+('789-654-1230', 4);
+
+INSERT INTO instructor_phone (phoneNumber, instructorID)
+VALUES 
+('111-222-3333', 1),
+('222-333-4444', 2),
+('333-444-5555', 3),
+('444-555-6666', 4);
+
+INSERT INTO contact_person_phone (phoneNumber, contact_personID)
+VALUES 
+('555-123-4567', 1),
+('555-456-7890', 2),
+('555-789-0123', 3),
+('555-012-3456', 4);
+
 
